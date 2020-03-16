@@ -1,0 +1,1 @@
+This is a tool for SEIR usage during HRR tech-checks. It provides live feedback to the SEIR conducting the checks about the current progress of the students.  The responses of the students can be exported to a Google Sheet to be able to track who has completed the tech check.

@@ -1,0 +1,45 @@
+{
+  "name": "hrr-tech-check",
+  "version": "1.0.0",
+  "description": "This is a tool for SEIR usage during HRR tech-checks. It provides live feedback to the SEIR conducting the checks about the current progress of the students.  The responses of the students can be exported to a Google Sheet to be able to track who has completed the tech check.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:start": "nodemon -i public -i src -i node_modules server",
+    "dev:build": "webpack -d -w",
+    "start": "node server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diversifiedmechanic/hrr-tech-check.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diversifiedmechanic/hrr-tech-check/issues"
+  },
+  "homepage": "https://github.com/diversifiedmechanic/hrr-tech-check#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "nodemon": "^2.0.2",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
