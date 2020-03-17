@@ -1,12 +1,22 @@
 // server API calls
 module.exports = {
-  addUser(firstName, lastName) {
-    return fetch('/addUser', {
+  addUser(newUser) {
+    return fetch('/addStudent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ firstName, lastName }),
+      body: JSON.stringify(newUser),
+    })
+      .then((response) => response.json());
+  },
+  updateUser(update) {
+    return fetch('/updateStudent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(update),
     })
       .then((response) => response.json());
   },

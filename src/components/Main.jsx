@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-// import AdminPanel from './Admin/Panel';
+import AdminPanel from './Admin/Panel';
 // import StudentSheet from './Student/Sheet';
+import pageParser from './pageParser';
 import lib from '../lib';
 import './Main.css';
 
@@ -9,57 +10,65 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      id: null,
+      currentPage: 0,
+      isAdmin: false,
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateUserCallback = this.updateUserCallback.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+  updateUserCallback(update) {
+    const { id, currentPage } = this.state;
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const { firstName, lastName } = this.state;
-    lib.addUser(firstName, lastName)
-      .then((res) => {
-        this.setState({
-          firstName: '',
-          lastName: '',
+    if (id === null) {
+      lib.addUser(update)
+        .then((newId) => {
+          console.log(newId);
+          if (newId === 'Admin') {
+            this.setState({
+              isAdmin: true,
+            });
+          } else {
+            this.setState({
+              id: newId,
+              currentPage: currentPage + 1,
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Not a valid first or last name! ', error);
         });
-        console.log(res);
-      })
-      .catch(() => {
-        console.error('Not a valid first or last name!');
-      });
+    } else {
+      lib.updateUser({ id, update })
+        .then(() => {
+          this.setState({
+            currentPage: currentPage + 1,
+          });
+        })
+        .catch((error) => console.error(error));
+    }
   }
 
   render() {
-    const { firstName, lastName } = this.state;
+    const {
+      id,
+      currentPage,
+      isAdmin,
+    } = this.state;
+
+    let pageToRender;
+    if (isAdmin) {
+      pageToRender = <AdminPanel />;
+    } else {
+      pageToRender = pageParser(currentPage, id, this.updateUserCallback);
+    }
+
     return (
       <div className="Main">
         <h1>
-          Welcome to HRR45 Tech-Check!
+          Welcome HRR45!
         </h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="firstName">
-            <label>
-              First Name:
-              <input type="text" name="firstName" required value={firstName} onChange={this.handleChange} />
-            </label>
-          </div>
-          <div className="lastName">
-            <label>
-              Last Name:
-              <input type="text" name="lastName" required value={lastName} onChange={this.handleChange} />
-            </label>
-          </div>
-          <input type="submit" value="Submit" />
-        </form>
+        {pageToRender}
       </div>
     );
   }
