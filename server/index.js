@@ -29,7 +29,7 @@ app.post('/updateStudent', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  console.log('GET, Admin');
+  // console.log('GET, Admin');
   db.getAllStudents()
     .then((students) => {
       // console.log(students);

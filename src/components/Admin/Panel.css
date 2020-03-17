@@ -1,0 +1,34 @@
+.headers {
+  display: flex;
+  flex-direction: row;
+}
+
+.Main {
+  text-align: left;
+}
+
+.headerName {
+  width: 250px;
+}
+
+.headerItem {
+  width: 150px;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+}
+
+.studentList {
+  display: flex;
+  flex-direction: row;
+}
+
+.studentName {
+  width: 250px;
+}
+
+.checklistItem {
+  width: 150px;
+}
