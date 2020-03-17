@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import AdminPanel from './Admin/Panel';
-import StudentSheet from './Student/Sheet';
-import lib from './../lib.js';
+// import AdminPanel from './Admin/Panel';
+// import StudentSheet from './Student/Sheet';
+import lib from '../lib';
 import './Main.css';
 
 class Main extends React.Component {
@@ -26,10 +27,14 @@ class Main extends React.Component {
     const { firstName, lastName } = this.state;
     lib.addUser(firstName, lastName)
       .then((res) => {
+        this.setState({
+          firstName: '',
+          lastName: '',
+        });
         console.log(res);
       })
-      .catch((error) => {
-        alert(error);
+      .catch(() => {
+        console.error('Not a valid first or last name!');
       });
   }
 

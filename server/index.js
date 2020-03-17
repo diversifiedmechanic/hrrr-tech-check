@@ -1,4 +1,5 @@
 const express = require('express');
+// const database = require('../database');
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
