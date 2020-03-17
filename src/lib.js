@@ -20,4 +20,8 @@ module.exports = {
     })
       .then((response) => response.json());
   },
+  getAllStudents() {
+    return fetch('/admin')
+      .then((response) => response.json());
+  },
 };

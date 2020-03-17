@@ -6,10 +6,12 @@ module.exports = {
       firstName,
       lastName,
     });
-    // console.log();
     return newUser.save();
   },
   updateUser({ id, update }) {
     return User.findByIdAndUpdate(id, update);
+  },
+  getAllStudents() {
+    return User.find();
   },
 };

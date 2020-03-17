@@ -28,4 +28,14 @@ app.post('/updateStudent', (req, res) => {
     .catch((error) => res.status(500).json(error));
 });
 
+app.get('/admin', (req, res) => {
+  console.log('GET, Admin');
+  db.getAllStudents()
+    .then((students) => {
+      // console.log(students);
+      res.status(200).json(students);
+    })
+    .catch((error) => res.status(400).json(error));
+});
+
 app.listen(port, console.log(`Listening on port ${port}`));
