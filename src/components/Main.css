@@ -2,3 +2,11 @@
   text-align: center;
   /* background-color: cornflowerblue; */
 }
+
+.firstName {
+  margin: 10px;
+}
+
+.lastName {
+  margin: 10px;
+}
